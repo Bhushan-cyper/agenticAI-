@@ -86,6 +86,15 @@ const chatLimiter = rateLimit({
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // 4. API Routes
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: '🎓 CampusMind AI Backend API is online and operational',
+    healthCheck: '/api/health',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.use('/api/health', healthRoutes);
 app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/documents', documentRoutes);
