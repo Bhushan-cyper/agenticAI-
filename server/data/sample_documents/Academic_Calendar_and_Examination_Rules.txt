@@ -1,0 +1,28 @@
+# CAMPUS UNIVERSITY - ACADEMIC CALENDAR & EXAMINATION RULES
+
+## 1. Autumn Semester Key Dates
+- **Orientation & Registration**: August 1 - August 4.
+- **Commencement of Classes**: August 5.
+- **Mid-Semester Examinations**: October 6 to October 14.
+- **Techno-Cultural Fest (InnovateX)**: November 12 to November 14.
+- **Last Teaching Day**: November 28.
+- **End-Semester Final Exams**: December 5 to December 20.
+- **Winter Vacation**: December 22 to January 5.
+
+## 2. Spring Semester Key Dates
+- **Class Commencement**: January 6.
+- **Mid-Semester Examinations**: March 3 to March 10.
+- **Annual Sports Meet (Olympus)**: March 24 to March 26.
+- **End-Semester Final Exams**: May 4 to May 18.
+- **Summer Vacation & Internships**: May 20 to July 31.
+
+## 3. Attendance and Grading Regulations
+- **Minimum Attendance**: 75% attendance in theory and laboratory classes is strictly required to be eligible for end-semester examinations.
+- **Medical Leave Condonation**: Up to 10% relaxation is permitted on genuine medical grounds certified by the university health center doctor.
+- **Grading Scale**: Absolute 10-point scale:
+  - 90-100% -> Grade 'O' (Outstanding, 10.0)
+  - 80-89% -> Grade 'A+' (Excellent, 9.0)
+  - 70-79% -> Grade 'A' (Very Good, 8.0)
+  - 60-69% -> Grade 'B+' (Good, 7.0)
+  - 50-59% -> Grade 'B' (Above Average, 6.0)
+  - Below 40% -> Grade 'F' (Fail, 0.0)

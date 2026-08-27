@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment Variables & Secrets (CRITICAL)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+client/.env.local
+
+# Next.js Build Output
+.next/
+out/
+build/
+dist/
+
+# Server Uploads & Dynamic Data
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Logs & Debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs
+*.log
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary & Cache
+.cache/
+.parcel-cache/
+.eslintcache

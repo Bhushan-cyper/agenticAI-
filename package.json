@@ -1,0 +1,14 @@
+{
+  "name": "campusmind-rag-project",
+  "version": "1.0.0",
+  "description": "CampusMind AI - RAG-Powered College Chatbot & Document Ingestion Platform",
+  "scripts": {
+    "install:all": "cd server && npm install --legacy-peer-deps && cd ../client && npm install --legacy-peer-deps",
+    "seed": "cd server && npm run seed",
+    "server": "cd server && npm start",
+    "client": "cd client && npm run dev"
+  },
+  "keywords": ["rag", "nextjs", "express", "mongodb", "pinecone", "langchain", "socketio", "ai-chatbot"],
+  "author": "Google Antigravity Pair Programmer",
+  "license": "MIT"
+}

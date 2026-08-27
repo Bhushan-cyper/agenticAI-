@@ -1,0 +1,19 @@
+# CAMPUS UNIVERSITY - CENTRAL LIBRARY & STUDENT CLUBS GUIDE
+
+## 1. Central Library Hours and Borrowing Privileges
+- **Operating Hours**: Monday to Friday: 08:00 AM to 11:00 PM. Weekends and Exam Weeks: Open 24 Hours.
+- **Digital Library**: Access to IEEE Xplore, ACM Digital Library, ScienceDirect, and SpringerLink available on campus LAN and remote VPN.
+- **Book Circulation**:
+  - Undergraduate students may borrow up to 4 books for 14 days.
+  - Postgraduate & Research scholars may borrow up to 8 books for 30 days.
+  - Overdue fine is $0.50 per day per book.
+- Discussion rooms and silent reading cabins are reservable through the library kiosk.
+
+## 2. Student Clubs and Societies
+- **Technical Clubs**: ACM Student Chapter, Robotics & Automation Club, Coding Ninjas, Google Developer Student Clubs (GDSC), Aerospace & Drone Society.
+- **Cultural & Arts Clubs**: Music Society (Symphony), Dramatics Club (Abhinaya), Photography & Fine Arts, Dance Crew (StepUp).
+- **Social & Leadership**: Rotaract Youth, Literary & Debating Society, National Service Scheme (NSS), Entrepreneurship Cell (E-Cell).
+
+## 3. Sports & Health Facilities
+- Olympic-size swimming pool, 4 synthetic badminton courts, 2 basketball courts, cricket ground with floodlights, and a gymnasium with personal trainers.
+- University Health Centre: 24/7 emergency care, resident medical officer, free generic medicines, and ambulance service.
