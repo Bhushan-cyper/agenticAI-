@@ -3,12 +3,33 @@ const { Server } = require('socket.io');
 let io = null;
 
 const initSocket = (httpServer, clientUrl) => {
+  const allowedOriginRegex = [
+    /^https?:\/\/localhost(:\d+)?$/,
+    /^https?:\/\/127\.0\.0\.1(:\d+)?$/,
+    /^https:\/\/([a-zA-Z0-9_-]+\.)*vercel\.app$/,
+    /^https:\/\/([a-zA-Z0-9_-]+\.)*onrender\.com$/,
+  ];
+
   io = new Server(httpServer, {
     cors: {
-      origin: [clientUrl, 'http://localhost:3000', 'http://127.0.0.1:3000'],
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (clientUrl) {
+          const cleanClientUrl = clientUrl.trim().replace(/\/+$/, '');
+          if (origin === cleanClientUrl || origin.startsWith(cleanClientUrl)) {
+            return callback(null, true);
+          }
+        }
+        const isMatch = allowedOriginRegex.some((regex) => regex.test(origin));
+        if (isMatch || clientUrl === '*' || process.env.NODE_ENV !== 'production') {
+          return callback(null, true);
+        }
+        return callback(null, true);
+      },
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       credentials: true,
     },
+    transports: ['websocket', 'polling'],
   });
 
   io.on('connection', (socket) => {

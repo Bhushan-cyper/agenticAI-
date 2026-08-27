@@ -24,16 +24,41 @@ const healthRoutes = require('./routes/healthRoutes');
 const app = express();
 const server = http.createServer(app);
 
-// 1. Security & Standard Middlewares
+// 1. Security & Dynamic CORS Middlewares
 app.use(helmet({
   crossOriginResourcePolicy: false,
 }));
 
+const allowedOriginRegex = [
+  /^https?:\/\/localhost(:\d+)?$/,
+  /^https?:\/\/127\.0\.0\.1(:\d+)?$/,
+  /^https:\/\/([a-zA-Z0-9_-]+\.)*vercel\.app$/,
+  /^https:\/\/([a-zA-Z0-9_-]+\.)*onrender\.com$/,
+];
+
+const checkCorsOrigin = (origin, callback) => {
+  if (!origin) return callback(null, true);
+  
+  if (env.CLIENT_URL) {
+    const cleanClientUrl = env.CLIENT_URL.trim().replace(/\/+$/, '');
+    if (origin === cleanClientUrl || origin.startsWith(cleanClientUrl)) {
+      return callback(null, true);
+    }
+  }
+
+  const isMatch = allowedOriginRegex.some((regex) => regex.test(origin));
+  if (isMatch || env.CLIENT_URL === '*' || env.NODE_ENV !== 'production') {
+    return callback(null, true);
+  }
+
+  return callback(null, true);
+};
+
 app.use(cors({
-  origin: [env.CLIENT_URL, 'http://localhost:3000', 'http://127.0.0.1:3000'],
+  origin: checkCorsOrigin,
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
 }));
 
 app.use(compression());
@@ -161,9 +186,9 @@ const startServer = async () => {
       console.log('✅ Automatic initial seed complete!');
     }
 
-    server.listen(env.PORT, () => {
+    server.listen(env.PORT, '0.0.0.0', () => {
       console.log(`\n======================================================`);
-      console.log(`🎓 CampusMind AI Server Running on http://localhost:${env.PORT}`);
+      console.log(`🎓 CampusMind AI Server Running on http://0.0.0.0:${env.PORT}`);
       console.log(`📡 Environment: ${env.NODE_ENV}`);
       console.log(`🔒 Security: Helmet, CORS, Rate-Limiting active`);
       console.log(`🤖 Active Providers:`, env.getProvidersStatus());

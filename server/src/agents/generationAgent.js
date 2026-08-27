@@ -123,32 +123,35 @@ Guidelines:
 
     // 2. Try Gemini Fallback
     if (this.geminiClient) {
-      try {
-        const model = this.geminiClient.getGenerativeModel({
-          model: 'gemini-1.5-flash',
-          systemInstruction: systemPrompt,
-        });
+      const geminiModels = ['gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.5-flash-lite'];
+      for (const modelName of geminiModels) {
+        try {
+          const model = this.geminiClient.getGenerativeModel({
+            model: modelName,
+            systemInstruction: systemPrompt,
+          });
 
-        const prompt = `${contextText}\n\nQuestion: ${query}`;
+          const prompt = `${contextText}\n\nQuestion: ${query}`;
 
-        if (onTokenCallback) {
-          const resultStream = await model.generateContentStream(prompt);
-          let fullAnswer = '';
-          for await (const chunk of resultStream.stream) {
-            const token = chunk.text();
-            if (token) {
-              fullAnswer += token;
-              onTokenCallback(token);
+          if (onTokenCallback) {
+            const resultStream = await model.generateContentStream(prompt);
+            let fullAnswer = '';
+            for await (const chunk of resultStream.stream) {
+              const token = chunk.text();
+              if (token) {
+                fullAnswer += token;
+                onTokenCallback(token);
+              }
             }
+            return { answer: fullAnswer, provider: 'gemini' };
+          } else {
+            const result = await model.generateContent(prompt);
+            const answer = result.response.text();
+            return { answer, provider: 'gemini' };
           }
-          return { answer: fullAnswer, provider: 'gemini' };
-        } else {
-          const result = await model.generateContent(prompt);
-          const answer = result.response.text();
-          return { answer, provider: 'gemini' };
+        } catch (err) {
+          console.warn(`⚠️ Gemini generation with ${modelName} failed (${err.message}). Trying next...`);
         }
-      } catch (err) {
-        console.warn(`⚠️ Gemini generation failed (${err.message}). Using Extractive Fallback...`);
       }
     }
 

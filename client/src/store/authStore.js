@@ -91,7 +91,15 @@ export const useAuthStore = create((set, get) => ({
       return { success: true, user };
     } catch (err) {
       set({ isLoading: false });
-      const message = err.response?.data?.message || 'Registration failed.';
+      const validationErrors = err.response?.data?.errors
+        ?.map((validationError) => validationError.message)
+        .filter(Boolean)
+        .join(', ');
+      const message = validationErrors
+        || err.response?.data?.message
+        || (!err.response
+          ? 'Unable to connect to the server. Start the backend and try again.'
+          : 'Registration failed. Please try again.');
       return { success: false, message };
     }
   },

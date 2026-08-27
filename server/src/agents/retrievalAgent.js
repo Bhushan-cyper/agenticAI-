@@ -64,11 +64,12 @@ class RetrievalAgent {
    * Keyword fallback search in Chunk collection
    */
   async _keywordFallbackSearch(query, topK = 5, filter = null) {
-    const terms = query.toLowerCase().split(/\s+/).filter((t) => t.length > 2);
+    const escapeRegex = (s) => s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    const terms = query.trim().split(/\s+/).map((t) => t.trim()).filter((t) => t.length > 2);
     if (!terms.length) return [];
 
-    const regexArray = terms.map((t) => new RegExp(t, 'i'));
-    const mongoQuery = { text: { $in: regexArray } };
+    const orConditions = terms.map((t) => ({ text: { $regex: escapeRegex(t), $options: 'i' } }));
+    const mongoQuery = { $or: orConditions };
 
     if (filter && filter.department) {
       mongoQuery['metadata.department'] = filter.department;

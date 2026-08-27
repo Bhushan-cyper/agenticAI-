@@ -41,7 +41,7 @@ class EmbeddingService {
   getEmbeddingModelName() {
     const provider = this.getActiveProvider();
     if (provider === 'openai') return 'text-embedding-3-small';
-    if (provider === 'gemini') return 'text-embedding-004';
+    if (provider === 'gemini') return 'gemini-embedding-001';
     return 'local-tfidf-vectorizer-384d';
   }
 
@@ -131,13 +131,23 @@ class EmbeddingService {
     }
 
     if ((provider === 'gemini' || this.geminiClient) && this.geminiClient) {
-      try {
-        const model = this.geminiClient.getGenerativeModel({ model: 'text-embedding-004' });
-        const result = await model.embedContent(text);
-        return result.embedding.values;
-      } catch (err) {
-        console.warn(`⚠️ Gemini embedding failed (${err.message}). Falling back to local vectorizer.`);
+      const geminiEmbedModels = [
+        'gemini-embedding-001',
+        'gemini-embedding-2',
+        'gemini-embedding-2-preview',
+      ];
+      for (const modelName of geminiEmbedModels) {
+        try {
+          const model = this.geminiClient.getGenerativeModel({ model: modelName });
+          const result = await model.embedContent(text);
+          if (result && result.embedding && result.embedding.values) {
+            return result.embedding.values;
+          }
+        } catch (err) {
+          // try next model
+        }
       }
+      console.warn('⚠️ All Gemini embedding models failed. Falling back to local vectorizer.');
     }
 
     // Local dense vectorizer fallback
