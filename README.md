@@ -1,10 +1,18 @@
 # 🎓 CampusMind_AI — RAG-Based College Chatbot
 
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-agenticai26.vercel.app-4f46e5?style=for-the-badge)](https://agenticai26.vercel.app/)
+[![Backend API](https://img.shields.io/badge/Backend_API-Render-46E3B7?style=for-the-badge&logo=render)](https://github.com/Bhushan-cyper/agenticAI-)
+
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js%20(Pages%20Router)-000000?style=flat&logo=nextdotjs)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react)](https://react.dev/)
 [![Express](https://img.shields.io/badge/Backend-Node.js%20%2F%20Express-43853D?style=flat&logo=nodedotjs)](https://expressjs.com/)
 [![Vector Store](https://img.shields.io/badge/Vector_DB-Pinecone%20%2F%20In--Memory%20Cosine-0c8fe9?style=flat)](https://www.pinecone.io/)
 [![Socket.IO](https://img.shields.io/badge/Real--Time-Socket.IO-010101?style=flat&logo=socketdotio)](https://socket.io/)
+
+> **🌐 Live Production URL:** [https://agenticai26.vercel.app/](https://agenticai26.vercel.app/)
+>
+> **Demo Admin Login:** `admin@campusmind.edu` / `Admin@123456`
+> **Demo Student Login:** `student@campusmind.edu` / `Student@123456`
 
 **CampusMind_AI** is a production-grade, Retrieval-Augmented Generation (RAG) college help desk platform. It answers student queries about admissions, fees, hostel rules, academic calendar, placements, and campus facilities by retrieving grounded context from official documents with vector search, page-level source citations, and real-time streaming.
 

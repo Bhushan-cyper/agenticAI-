@@ -106,7 +106,7 @@ git push -u origin main
 
 6. Click **Deploy**.
 7. Once deployment finishes, Vercel will give you your production domain:
-   👉 **`https://campusmind.vercel.app`** *(or similar)*.
+   👉 **`https://agenticai26.vercel.app`**
 
 ---
 
@@ -118,7 +118,7 @@ Now that your frontend is live on Vercel:
 2. Go to **Environment** tab.
 3. Edit `CLIENT_URL` and set it to your **Vercel domain**:
    ```
-   CLIENT_URL = https://campusmind.vercel.app
+   CLIENT_URL = https://agenticai26.vercel.app
    ```
 4. Click **Save Changes**. Render will automatically redeploy with the updated CORS policy.
 
@@ -139,7 +139,7 @@ If you ever want to re-seed manually:
 
 ## ✅ Post-Deployment Verification Checklist
 
-- [ ] Visit your Vercel URL (`https://campusmind.vercel.app`).
+- [ ] Visit your Vercel URL (`https://agenticai26.vercel.app`).
 - [ ] Log in with Demo Admin: `admin@campusmind.edu` / `Admin@123456`.
 - [ ] Visit `/settings` and verify all services (MongoDB, Vector Store, Gemini, RAG Pipeline) show **Active / Operational**.
 - [ ] Visit `/chat` and submit a test query (e.g., *"What are the hostel mess timings?"*).
