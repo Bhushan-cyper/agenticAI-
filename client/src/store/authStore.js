@@ -70,7 +70,10 @@ export const useAuthStore = create((set, get) => ({
       return { success: true, user };
     } catch (err) {
       set({ isLoading: false });
-      const message = err.response?.data?.message || 'Login failed. Please check your credentials.';
+      const message = err.response?.data?.message
+        || (!err.response
+          ? 'Unable to connect to the backend server. If using Render free-tier, the server may take ~30-45s to wake up on first load. Please check your backend URL and try again.'
+          : 'Login failed. Please check your credentials.');
       return { success: false, message };
     }
   },
@@ -98,7 +101,7 @@ export const useAuthStore = create((set, get) => ({
       const message = validationErrors
         || err.response?.data?.message
         || (!err.response
-          ? 'Unable to connect to the server. Start the backend and try again.'
+          ? 'Unable to connect to the backend server. If using Render free-tier, the server may take ~30-45s to wake up on first load. Please verify your Render URL and try again.'
           : 'Registration failed. Please try again.');
       return { success: false, message };
     }
