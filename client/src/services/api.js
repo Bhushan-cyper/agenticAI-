@@ -9,6 +9,10 @@ const getApiBaseUrl = () => {
   return raw;
 };
 
+if (typeof window !== 'undefined') {
+  console.log('🌐 [CampusMind] Active Backend API:', getApiBaseUrl());
+}
+
 const api = axios.create({
   baseURL: getApiBaseUrl(),
   headers: {
