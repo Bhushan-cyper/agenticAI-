@@ -6,7 +6,9 @@
     "install:all": "cd server && npm install --legacy-peer-deps && cd ../client && npm install --legacy-peer-deps",
     "seed": "cd server && npm run seed",
     "server": "cd server && npm start",
-    "client": "cd client && npm run dev"
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "vercel-build": "cd client && npm install --legacy-peer-deps && npm run build"
   },
   "keywords": ["rag", "nextjs", "express", "mongodb", "pinecone", "langchain", "socketio", "ai-chatbot"],
   "author": "Google Antigravity Pair Programmer",
